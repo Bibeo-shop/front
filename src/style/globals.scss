@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './colors';
+
+@layer base {
+  :root {
+    --background: #{$white};
+    --third: #{$third};
+    --ghost: #{$gray-strong};
+    --foreground: #{$black};
+    --card: #{$white};
+    --card-foreground: #{$black};
+    --popover: #{$white};
+    --popover-foreground: #{$black};
+    --primary: #{$primary};
+    --primary-foreground: #{$white};
+    --secondary: #{$secondary};
+    --secondary-foreground: #{$white};
+    --muted: #{$secondary};
+    --muted-foreground: #{$muted-foreground};
+    --accent: #{$gray-strong};
+    --accent-foreground: #{$white};
+    --destructive: #{$danger};
+    --destructive-foreground: #{$danger};
+    --border: #{$primary};
+    --input: #{$primary};
+    --ring: #{$primary};
+    --radius: 1.5rem;
+  }
+
+  .dark {
+    --background: #{$black};
+    --foreground: #{$white};
+    --card: #{$black};
+    --card-foreground: #{$white};
+    --popover: #{$black};
+    --popover-foreground: #{$white};
+    --primary: #{$primary};
+    --primary-foreground: #{$white};
+    --secondary: #{$white};
+    --secondary-foreground: #{$white};
+    --muted: #{$white};
+    --muted-foreground: #{$dark-muted-foreground};
+    --accent: #{$white};
+    --accent-foreground: #{$white};
+    --destructive: #{$dark-destructive};
+    --destructive-foreground: #{$danger};
+    --border: #{$primary};
+    --input: #{$white};
+    --ring: #{$primary};
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+* {
+  line-height: 1;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, Pretendard, sans-serif;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 200;
+  src: url("/fonts/Pretendard.otf") format("truetype");
+}
