@@ -2,7 +2,9 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:@tanstack/eslint-plugin-query/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended",
+    "plugin:storybook/recommended"
   ],
   "rules": {
     "no-var": "warn",
@@ -28,5 +30,9 @@
       }
     ]
   },
-  "plugins": ["react", "@typescript-eslint", "@tanstack/query"]
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "@tanstack/query"
+  ]
 }
