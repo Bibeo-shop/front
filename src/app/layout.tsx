@@ -1,3 +1,4 @@
+import RQProvider from '@/components/RQProvider'
 import '@/style/globals.scss'
 import { Inter } from 'next/font/google'
 
@@ -15,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <RQProvider>{children}</RQProvider>
+      </body>
     </html>
   )
 }
