@@ -1,5 +1,5 @@
 import RQProvider from '@/components/RQProvider'
-import '@/style/globals.scss'
+import '@/styles/globals.scss'
 
 export const metadata = {
   title: 'BibeoShop',

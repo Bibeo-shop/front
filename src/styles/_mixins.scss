@@ -1,0 +1,23 @@
+@import './variables';
+
+// px단위 rem으로 변환하는 함수 (px, base font-size)
+@function pxToRem($px, $base: 16) {
+  @return ($px / $base) + rem;
+}
+
+@mixin container($max-width: 1920px) {
+  max-width: $max-width;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+@mixin breakpoint($point) {
+  @if map-has-key($breakpoints, $point) {
+    @media (max-width: map-get($breakpoints, $point)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
