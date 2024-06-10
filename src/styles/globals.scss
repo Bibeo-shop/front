@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import './colors';
+@import 'mixins';
 
 @layer base {
   :root {
@@ -67,13 +68,14 @@
 }
 
 body {
-  padding: 0;
+  min-width: 390px;
   margin: 0;
+  padding: 0;
   font-family: -apple-system, Pretendard, sans-serif;
 }
 
 @font-face {
-  font-family: "Pretendard";
-  font-weight: 200;
-  src: url("/fonts/Pretendard.otf") format("truetype");
+  font-family: 'Pretendard';
+  font-weight: 400;
+  src: url('/fonts/Pretendard.otf') format('opentype');
 }
