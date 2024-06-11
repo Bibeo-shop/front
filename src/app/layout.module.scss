@@ -1,0 +1,32 @@
+@import '@/styles/mixins';
+
+.headerWrap {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 pxToRem(60);
+}
+
+.containerWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: pxToRem(126);
+}
+
+.mainWrap {
+  margin: 0 pxToRem(60);
+  width: 100vw;
+  max-width: 1400px;
+}
+
+@media (max-width: 1680px) {
+  .mainWrap {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1480px) {
+  .mainWrap {
+    max-width: 1000px;
+  }
+}

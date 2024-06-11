@@ -1,0 +1,46 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.headerWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: pxToRem(126);
+}
+
+.topNavWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  li {
+    cursor: pointer;
+  }
+}
+
+.menuWrap {
+  display: flex;
+  align-items: center;
+
+  & li {
+    margin-right: pxToRem(26);
+    padding: pxToRem(10);
+    border-radius: 50%;
+
+    &:hover {
+      background-color: $third;
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, 'tablet')) {
+  .menuWrap {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+}
