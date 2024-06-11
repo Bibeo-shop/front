@@ -5,9 +5,21 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { MenuIcon } from '@/components/atom/svg'
 import Link from 'next/link'
+import Typography from '@/components/atom/Typography/Typography'
+import { MenuIcon } from '@/components/atom/svg'
 import cn from './Menu.module.scss'
+
+
+export const categoryData = [
+  {
+    id: 1,
+    category: 'NEW',
+  },
+  { id: 2, category: 'BEST' },
+  { id: 3, category: 'NECKLACE' },
+  { id: 4, category: 'EARRING' },
+]
 
 const Menu = () => {
   return (
@@ -22,20 +34,15 @@ const Menu = () => {
           <SheetClose />
         </SheetHeader>
         <nav className={cn.rightNavWrap}>
-          <ul>
-            <li>
-              <Link href="/">new</Link>
+        <ul>
+          {categoryData.map((item) => (
+            <li key={item.id}>
+              <Link href="/">
+                <Typography size="24" color="primary" weight="800">{item.category}</Typography>
+              </Link>
             </li>
-            <li>
-              <Link href="/">best</Link>
-            </li>
-            <li>
-              <Link href="/">necklace</Link>
-            </li>
-            <li>
-              <Link href="/">earring</Link>
-            </li>
-          </ul>
+          ))}
+        </ul>
         </nav>
       </SheetContent>
     </Sheet>
