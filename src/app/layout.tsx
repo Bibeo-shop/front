@@ -20,10 +20,14 @@ export default function RootLayout({
         <RQProvider>
           <header className={cn.headerWrap}>
             <Header />
-            <Category />
           </header>
           <div className={cn.containerWrap}>
-            <main className={cn.mainWrap}>{children}</main>
+            <aside>
+              <Category />
+            </aside>
+            <main className={cn.mainWrap}>
+              <div className={cn.container}>{children}</div>
+            </main>
           </div>
         </RQProvider>
       </body>
