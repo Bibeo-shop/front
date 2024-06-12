@@ -5,7 +5,7 @@ import cn from './Typography.module.scss'
 export interface TextProps {
   children: ReactNode
   type?: React.ElementType
-  size?: '14' | '16' | '18' | '24'
+  size?: '14' | '16' | '18' | '20' | '24'
   color?:
     | 'black'
     | 'red'
@@ -32,6 +32,7 @@ const Typography: React.FC<TextProps> = ({
       [cn.fontSize14]: size === '14',
       [cn.fontSize16]: size === '16',
       [cn.fontSize18]: size === '18',
+      [cn.fontSize20]: size === '20',
       [cn.fontSize24]: size === '24',
       [cn.black]: color === 'black',
       [cn.red]: color === 'red',

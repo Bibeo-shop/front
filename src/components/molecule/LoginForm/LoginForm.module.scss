@@ -1,0 +1,42 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: pxToRem(510);
+  padding: pxToRem(94) pxToRem(50);
+  border: 1px solid $gray-light;
+  border-radius: 30px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: pxToRem(62);
+}
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  gap: pxToRem(12);
+  width: 100%;
+}
+
+.linkWrap {
+  display: flex;
+  justify-content: right;
+  margin: pxToRem(6) 0;
+}
+
+.link::after {
+  content: ' ';
+  display: inline-block;
+  margin: 0 10px;
+  border-left: 2px solid $gray-normal;
+  height: pxToRem(12);
+  vertical-align: middle;
+}
