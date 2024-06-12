@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import Logo from '../../atom/Logo/Logo'
 import { CartIcon, MyPageIcon, SearchIcon } from '@/components/atom/svg'
@@ -19,7 +17,7 @@ const Header = () => {
               </button>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/login">
                 <MyPageIcon />
               </Link>
             </li>
