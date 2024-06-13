@@ -1,6 +1,10 @@
 @import '@/styles/colors';
 @import '@/styles/mixins';
 
+.fontSize12 {
+  font-size: pxToRem(12);
+}
+
 .fontSize14 {
   font-size: pxToRem(14);
 }
