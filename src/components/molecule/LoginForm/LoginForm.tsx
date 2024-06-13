@@ -19,14 +19,16 @@ const LoginForm = () => {
       <div className={cn.inputContainer}>
         <div className={cn.inputWrap}>
           <Input
+            id="loginEmail"
             type="email"
-            placeholder="이메일"
+            label="이메일"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <Input
+            id="loginPassword"
             type="password"
-            placeholder="비밀번호"
+            label="비밀번호"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
