@@ -5,3 +5,9 @@
   justify-content: center;
   margin-bottom: pxToRem(80);
 }
+
+@media (max-width: map-get($breakpoints, 'mobile')) {
+  .title {
+    margin-bottom: pxToRem(60);
+  }
+}
