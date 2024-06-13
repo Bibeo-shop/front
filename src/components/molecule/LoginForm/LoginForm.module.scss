@@ -40,3 +40,11 @@
   height: pxToRem(12);
   vertical-align: middle;
 }
+
+@media (max-width: map-get($breakpoints, 'mobile')) {
+  .container {
+    border-radius: 0;
+    padding-left: pxToRem(30);
+    padding-right: pxToRem(30);
+  }
+}
