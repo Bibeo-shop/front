@@ -22,6 +22,7 @@
 .menuWrap {
   display: flex;
   align-items: center;
+  background-color: $white;
 
   & li {
     margin-right: pxToRem(26);
@@ -35,6 +36,11 @@
 }
 
 @media (max-width: map-get($breakpoints, 'tablet')) {
+  .headerWrap {
+    height: 100%;
+    padding: pxToRem(20) 0;
+  }
+
   .menuWrap {
     position: fixed;
     bottom: 0;
