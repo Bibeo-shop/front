@@ -45,6 +45,11 @@
   padding-top: pxToRem(4);
 }
 
+.birthMessage {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   margin: 0 0 pxToRem(30) pxToRem(20);
 }
@@ -60,12 +65,13 @@
   height: pxToRem(240);
   margin: 0 pxToRem(14);
   padding: pxToRem(24);
+  white-space: pre-wrap;
   background-color: $secondary;
 }
 
 .checkbox {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 6px;
   margin: pxToRem(12) pxToRem(14);
 }
@@ -99,10 +105,16 @@
   width: 100%;
 }
 
+.checkWrap {
+  display: flex;
+  align-items: center;
+  gap: pxToRem(4);
+}
+
 @media (max-width: map-get($breakpoints, 'mobile')) {
   .container {
     border-radius: 0;
-    padding: 0 pxToRem(30) 0 pxToRem(30);
+    padding: 0 pxToRem(30);
   }
 
   .addressSearch {

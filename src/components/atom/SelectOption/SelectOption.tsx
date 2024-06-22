@@ -12,10 +12,10 @@ export interface SelectProps {
   end: number
   placeholder: string
   suffix: string
+  value: string
+  onChange: (value: string) => void
   reverse?: boolean
   className?: string
-  selectedValue: string | undefined
-  setSelectedValue: (value: string) => void
 }
 
 const SelectOption = ({
@@ -23,10 +23,10 @@ const SelectOption = ({
   end,
   placeholder,
   suffix,
+  value,
+  onChange,
   reverse = false,
   className,
-  selectedValue,
-  setSelectedValue,
 }: SelectProps) => {
   const generateOptions = (
     start: number,
@@ -59,7 +59,7 @@ const SelectOption = ({
 
   return (
     <div className={className}>
-      <Select onValueChange={(value) => setSelectedValue(value)}>
+      <Select value={value} onValueChange={onChange}>
         <SelectTrigger>
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>

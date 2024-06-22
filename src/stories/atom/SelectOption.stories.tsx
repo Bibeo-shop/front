@@ -14,8 +14,6 @@ export default {
     suffix: { control: 'text' },
     reverse: { control: 'boolean' },
     className: { control: 'text' },
-    selectedValue: { control: 'text' },
-    setSelectedValue: { action: 'setSelectedValue' },
   },
 } as Meta
 
@@ -29,6 +27,4 @@ Default.args = {
   suffix: '일',
   reverse: false,
   className: '',
-  selectedValue: undefined,
-  setSelectedValue: (value: string) => console.log(value),
 }
