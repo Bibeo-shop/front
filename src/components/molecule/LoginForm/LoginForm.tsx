@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { LoginFormProps } from '@/types'
 import cn from './LoginForm.module.scss'
+import { messages } from '@/utils/message'
 
 const LoginForm = () => {
   const {
@@ -41,16 +42,16 @@ const LoginForm = () => {
   }
 
   const emailRegister = register('email', {
-    required: { value: true, message: '이메일은 필수 입력입니다.' },
+    required: { value: true, message: messages.isEmpty('이메일') },
     pattern: {
       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-      message: '유효한 이메일 주소를 입력하세요.',
+      message: messages.isPattern('이메일'),
     },
   })
   const passwordRegister = register('password', {
-    required: { value: true, message: '비밀번호는 필수 입력입니다.' },
-    maxLength: { value: 16, message: '비밀번호는 16자 이내여야 합니다.' },
-    minLength: { value: 8, message: '비밀번호는 8자 이상이여야 합니다.' },
+    required: { value: true, message: messages.isEmpty('비밀번호') },
+    maxLength: { value: 16, message: messages.maxLength('비밀번호', 16) },
+    minLength: { value: 8, message: messages.minLength('비밀번호', 2) },
   })
 
   return (
