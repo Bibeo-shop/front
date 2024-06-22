@@ -32,6 +32,10 @@
   margin: pxToRem(6) 0;
 }
 
+.message {
+  padding: 0 pxToRem(16);
+}
+
 .link::after {
   content: ' ';
   display: inline-block;
