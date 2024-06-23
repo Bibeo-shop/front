@@ -39,16 +39,16 @@
 .link::after {
   content: ' ';
   display: inline-block;
+  vertical-align: middle;
+  height: pxToRem(12);
   margin: 0 10px;
   border-left: 2px solid $gray-normal;
-  height: pxToRem(12);
-  vertical-align: middle;
 }
 
-@media (max-width: map-get($breakpoints, 'mobile')) {
+@include breakpoint('mobile') {
   .container {
-    border-radius: 0;
     padding-left: pxToRem(30);
     padding-right: pxToRem(30);
+    border-radius: 0;
   }
 }

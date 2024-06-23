@@ -1,0 +1,127 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.productBuyInfo {
+  max-width: pxToRem(432);
+  padding: pxToRem(40) pxToRem(18) pxToRem(80) pxToRem(18);
+  border: 1px solid $gray-light;
+  border-radius: 30px;
+}
+
+.statusWrap {
+  display: flex;
+  gap: pxToRem(2);
+  margin-bottom: pxToRem(14);
+}
+
+.title {
+  margin: pxToRem(2) 0;
+}
+
+.detailWrap {
+  display: flex;
+  align-items: center;
+  gap: pxToRem(4);
+  margin-top: pxToRem(4);
+
+  span {
+    margin-left: pxToRem(2);
+  }
+}
+
+.priceWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: pxToRem(30);
+}
+
+.beforePrice {
+  margin-left: pxToRem(2);
+  text-decoration: line-through;
+}
+
+.rateWrap {
+  display: flex;
+}
+
+.pointWrap {
+  display: flex;
+  justify-content: space-between;
+  margin-top: pxToRem(40);
+  padding: pxToRem(24);
+  border-radius: 12px;
+  background-color: $secondary;
+}
+
+.wrap {
+  margin: pxToRem(40) 0;
+}
+
+.info {
+  padding: 0 pxToRem(16);
+}
+
+.infoWrap {
+  display: flex;
+  flex-direction: column;
+  gap: pxToRem(4);
+  margin: 0 pxToRem(16);
+}
+
+.infoGroup {
+  display: flex;
+  width: 100%;
+}
+
+.label {
+  max-width: pxToRem(130);
+  width: 100%;
+}
+
+.selectWrap {
+  margin: pxToRem(20) pxToRem(16);
+  border: 1px solid $primary;
+}
+
+.optionContainer {
+  display: flex;
+  flex-direction: column;
+  padding: pxToRem(20) pxToRem(16);
+  border: 1px solid $gray-light;
+  border-radius: pxToRem(12);
+}
+
+.optionGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: pxToRem(10);
+}
+
+.selectBtn {
+  display: flex;
+  align-items: center;
+  gap: pxToRem(24);
+}
+
+.btnWrap {
+  display: flex;
+  margin-top: pxToRem(30);
+  gap: pxToRem(10);
+
+  button:first-child {
+    max-width: pxToRem(62);
+    border-radius: pxToRem(12);
+  }
+}
+
+@include breakpoint('tablet') {
+  .productBuyInfo {
+    width: 100%;
+    max-width: none;
+    border: 1px solid $gray-light;
+    border-radius: 30px;
+    padding: pxToRem(40) pxToRem(18) pxToRem(80) pxToRem(18);
+  }
+}

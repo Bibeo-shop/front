@@ -1,0 +1,131 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.reviewTab {
+  display: flex;
+  flex-direction: column;
+}
+
+.rateContainer {
+  width: 100%;
+  margin: pxToRem(24) 0;
+  border-radius: 30px;
+  border: 1px solid $primary;
+}
+
+.starWrap {
+  display: flex;
+  margin: pxToRem(4) 0;
+}
+
+.countGroup {
+  display: flex;
+}
+
+.rateWrap {
+  display: flex;
+  gap: pxToRem(6);
+}
+
+.separator {
+  width: 1px;
+  height: 100%;
+}
+.countWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: pxToRem(4);
+  flex: 1;
+  margin: pxToRem(22) 0;
+
+  &:first-child {
+    border-right: 1px solid $gray-light;
+  }
+}
+
+.reviewArea {
+  display: flex;
+  min-height: pxToRem(144);
+  margin-bottom: pxToRem(20);
+  padding: pxToRem(10) pxToRem(18);
+  border-radius: 30px;
+  background-color: $white;
+}
+
+.reviewContainer {
+  width: 100%;
+  padding: pxToRem(50) pxToRem(24);
+  border: 1px solid $gray-light;
+  border-radius: 30px;
+  background: $secondary;
+}
+
+.userInfoWrap {
+  display: flex;
+  flex-direction: column;
+  margin-top: pxToRem(16);
+  padding-right: pxToRem(16);
+  padding-bottom: pxToRem(8);
+  border-right: 1px dashed $gray-light;
+}
+
+.userName {
+  position: block;
+  margin-bottom: pxToRem(4);
+}
+
+.userReviewWrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: pxToRem(16) 0;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  padding: 0 pxToRem(20);
+  width: 100%;
+  gap: pxToRem(8);
+}
+
+.option {
+  margin-bottom: pxToRem(6);
+}
+
+.imageWrap {
+  position: relative;
+  width: pxToRem(80);
+  height: pxToRem(80);
+  border-radius: 12px;
+  background-color: $gray-light;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.label {
+  margin-bottom: pxToRem(6);
+}
+
+@include breakpoint('tablet') {
+  .reviewArea {
+    flex-direction: column;
+  }
+
+  .userInfoWrap {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px dashed $gray-light;
+  }
+
+  .review {
+    padding: 0;
+  }
+}
+
+

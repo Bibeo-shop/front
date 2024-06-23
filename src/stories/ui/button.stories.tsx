@@ -4,6 +4,7 @@ import { Button, ButtonProps } from '@/components/ui/button'
 
 export default {
   title: 'Components/ui/Button',
+  tags: ['autodocs'],
   component: Button,
   argTypes: {
     variant: {

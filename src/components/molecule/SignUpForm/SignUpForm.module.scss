@@ -111,10 +111,10 @@
   gap: pxToRem(4);
 }
 
-@media (max-width: map-get($breakpoints, 'mobile')) {
+@include breakpoint('mobile') {
   .container {
     border-radius: 0;
-    padding: 0 pxToRem(30);
+    padding: pxToRem(94) pxToRem(10) pxToRem(94) pxToRem(10);
   }
 
   .addressSearch {

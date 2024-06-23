@@ -19,8 +19,10 @@ const Category = () => {
         <ul>
           {categoryData.map((item) => (
             <li key={item.id}>
-              <Link href="/">
-                <Typography color="primary" weight="800">{item.category}</Typography>
+              <Link href="/products">
+                <Typography color="primary" weight="800">
+                  {item.category}
+                </Typography>
               </Link>
             </li>
           ))}

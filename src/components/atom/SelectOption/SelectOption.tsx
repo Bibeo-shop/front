@@ -7,69 +7,18 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-export interface SelectProps {
-  start: number
-  end: number
-  placeholder: string
-  suffix: string
-  value: string
-  onChange: (value: string) => void
-  reverse?: boolean
-  className?: string
-}
-
-const SelectOption = ({
-  start,
-  end,
-  placeholder,
-  suffix,
-  value,
-  onChange,
-  reverse = false,
-  className,
-}: SelectProps) => {
-  const generateOptions = (
-    start: number,
-    end: number,
-    suffix: string,
-    reverse: boolean
-  ) => {
-    const options = []
-    if (!reverse) {
-      for (let i = start; i <= end; i++) {
-        options.push(
-          <SelectItem key={i} value={i.toString()}>
-            {i}
-            {suffix}
-          </SelectItem>
-        )
-      }
-    } else {
-      for (let i = end; i >= start; i--) {
-        options.push(
-          <SelectItem key={i} value={i.toString()}>
-            {i}
-            {suffix}
-          </SelectItem>
-        )
-      }
-    }
-    return options
-  }
-
+const SelectOption = ({}) => {
   return (
-    <div className={className}>
-      <Select value={value} onValueChange={onChange}>
-        <SelectTrigger>
-          <SelectValue placeholder={placeholder} />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            {generateOptions(start, end, suffix, reverse)}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-    </div>
+    <Select>
+      <SelectTrigger className="w-full bg-white">
+        <SelectValue placeholder="옵션 선택" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="option1">option1</SelectItem>
+        <SelectItem value="option2">option2</SelectItem>
+        <SelectItem value="option3">option3</SelectItem>
+      </SelectContent>
+    </Select>
   )
 }
 

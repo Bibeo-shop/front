@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import Typography from '@/components/atom/Typography/Typography'
 import {
   Sheet,
   SheetClose,
@@ -5,11 +7,8 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import Link from 'next/link'
-import Typography from '@/components/atom/Typography/Typography'
 import { MenuIcon } from '@/components/atom/svg'
 import cn from './Menu.module.scss'
-
 
 export const categoryData = [
   {
@@ -34,15 +33,17 @@ const Menu = () => {
           <SheetClose />
         </SheetHeader>
         <nav className={cn.rightNavWrap}>
-        <ul>
-          {categoryData.map((item) => (
-            <li key={item.id}>
-              <Link href="/">
-                <Typography size="24" color="primary" weight="800">{item.category}</Typography>
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <ul>
+            {categoryData.map((item) => (
+              <li key={item.id}>
+                <Link href="/products">
+                  <Typography size="24" color="primary" weight="800">
+                    {item.category}
+                  </Typography>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </nav>
       </SheetContent>
     </Sheet>

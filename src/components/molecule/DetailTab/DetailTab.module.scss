@@ -1,0 +1,15 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.detailTab {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: auto;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}

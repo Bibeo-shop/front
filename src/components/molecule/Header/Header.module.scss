@@ -35,7 +35,7 @@
   }
 }
 
-@media (max-width: map-get($breakpoints, 'tablet')) {
+@include breakpoint('tablet') {
   .headerWrap {
     height: 100%;
     padding: pxToRem(20) 0;

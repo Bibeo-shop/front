@@ -1,0 +1,21 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.productsTab {
+  display: flex;
+  width: 100%;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.listWrap {
+  display: flex;
+  justify-content: space-evenly;
+  border-top: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-light;
+  border-radius: 0;
+}

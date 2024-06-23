@@ -1,0 +1,91 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.qnaTab {
+  display: flex;
+  flex-direction: column;
+}
+
+.qnaContainer {
+  width: 100%;
+  margin-top: pxToRem(4);
+  padding: pxToRem(50) pxToRem(24);
+  border: 1px solid $gray-light;
+  border-radius: 30px;
+  background: $secondary;
+}
+
+.qnaWrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: pxToRem(144);
+  margin-bottom: pxToRem(20);
+  padding: pxToRem(10) pxToRem(18);
+  border-radius: 30px;
+  background-color: $white;
+}
+
+.userInfoWrap {
+  display: flex;
+  justify-content: space-between;
+  margin-top: pxToRem(16);
+  padding-right: pxToRem(10);
+}
+
+.userName {
+  position: block;
+  margin-bottom: pxToRem(4);
+}
+
+.contentArea {
+  display: flex;
+  width: 100%;
+  margin: pxToRem(16) 0;
+}
+
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+.textarea {
+  display:flex;
+  flex-direction: column;
+  margin: pxToRem(16) 0 pxToRem(8) 0;
+}
+
+.btnWrap {
+  display: flex;
+  justify-content: right;
+  gap: pxToRem(4);
+  margin: pxToRem(8) 0;
+}
+
+.button {
+  max-width: pxToRem(76);
+  font-size: pxToRem(12);
+}
+
+.date {
+  margin-right: pxToRem(4);
+}
+
+.replyContainer {
+  display: flex;
+}
+
+.admin {
+  background-color: $gray-light;
+}
+
+.btnAdminWrap {
+  display: none;
+}
+
+.isAdmin {
+  display: block;
+}

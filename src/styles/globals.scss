@@ -23,9 +23,9 @@
     --accent: #{$gray-strong};
     --accent-foreground: #{$white};
     --destructive: #{$danger};
-    --destructive-foreground: #{$danger};
-    --border: #{$gray-normal};
-    --input: #{$primary};
+    --destructive-foreground: #{$white};
+    --border: #{$gray-light};
+    --input: #{$gray-normal};
     --ring: #{$gray-normal};
     --radius: 1.5rem;
   }
