@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { postSignUp } from '@/api/signup'
 import { useTerms } from '@/hooks/useTerms'
 import Typography from '@/components/atom/Typography/Typography'
-import SelectOption from '@/components/atom/SelectOption/SelectOption'
+import SelectDateOption from '@/components/atom/SelectDateOption/SelectDateOption'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { SignUpFormProps } from '@/types'
@@ -311,7 +311,7 @@ const SignUpForm = () => {
                     required: messages.isEmpty('년도를'),
                   }}
                   render={({ field }) => (
-                    <SelectOption
+                    <SelectDateOption
                       placeholder="년"
                       suffix="년"
                       start={1900}
@@ -330,7 +330,7 @@ const SignUpForm = () => {
                     required: messages.isEmpty('월을'),
                   }}
                   render={({ field }) => (
-                    <SelectOption
+                    <SelectDateOption
                       placeholder="월"
                       suffix="월"
                       start={1}
@@ -347,7 +347,7 @@ const SignUpForm = () => {
                     required: messages.isEmpty('일을'),
                   }}
                   render={({ field }) => (
-                    <SelectOption
+                    <SelectDateOption
                       placeholder="일"
                       suffix="일"
                       start={1}
