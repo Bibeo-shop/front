@@ -7,6 +7,7 @@ import { Input, InputProps } from '@/components/ui/input'
 export default {
   title: 'Components/ui/Input',
   component: Input,
+  tags: ['autodocs'],
   argTypes: {
     type: {
       control: {
