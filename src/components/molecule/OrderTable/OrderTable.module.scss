@@ -1,0 +1,88 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.product {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.option {
+  color: $gray-strong;
+}
+
+.mobileRow {
+  display: none;
+}
+
+.count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: pxToRem(20);
+}
+
+.imageArea {
+  position: relative;
+  width: pxToRem(80);
+  height: pxToRem(80);
+  border-radius: 12px;
+  background-color: $gray-light;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.option {
+  color: $gray-strong;
+}
+
+@media (max-width: 1480px) {
+  .mobileHide {
+    display: none;
+  }
+
+  .headCol {
+    width: 100%;
+    height: auto;
+    padding: pxToRem(20) 0;
+  }
+
+  .tableRow {
+    display: flex;
+    width: 100%;
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .tableBody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileRow {
+    display: flex;
+    align-items: center;
+    width: 80px;
+    text-align: left;
+  }
+
+  .cellWrap {
+    display: flex;
+    margin-left: pxToRem(126);
+    padding: pxToRem(8) 0;
+  }
+
+  .cellLast {
+    margin-bottom: pxToRem(40);
+  }
+}

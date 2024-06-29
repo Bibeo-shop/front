@@ -1,0 +1,148 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.order {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: pxToRem(60) pxToRem(40) pxToRem(80) pxToRem(40);
+  border: 1px solid $gray-light;
+  border-radius: 30px;
+}
+
+.sectionArea {
+  margin-bottom: pxToRem(50);
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  padding: 0 pxToRem(16);
+  border-bottom: 1px solid $gray-light;
+}
+
+.priceWrap {
+  display: flex;
+  align-items: center;
+  padding: 0 pxToRem(16);
+  border-bottom: 1px solid $gray-light;
+}
+
+.inputLabel {
+  width: 100%;
+  max-width: pxToRem(200);
+  padding: pxToRem(20) 0;
+}
+
+.input {
+  border: 1px solid $gray-light;
+  border-radius: 10px;
+  padding: pxToRem(10) pxToRem(14);
+}
+
+.btnWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.checkLabel {
+  display: flex;
+  gap: pxToRem(16);
+  padding: pxToRem(20) pxToRem(16);
+}
+
+.couponCheckWrap {
+  display: flex;
+  align-items: center;
+  width: pxToRem(80);
+}
+
+.labelWrap {
+  display: flex;
+  align-items: center;
+  gap: pxToRem(4);
+}
+
+.address {
+  width: 100%;
+}
+
+.mainAddress {
+  width: 100%;
+  max-width: 400px;
+}
+
+.inputGroup {
+  display: flex;
+  gap: pxToRem(10);
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: pxToRem(8);
+  margin: pxToRem(8) 0;
+}
+
+.addressWrap {
+  display: flex;
+  gap: pxToRem(10);
+}
+
+.textarea {
+  margin: pxToRem(8) 0;
+}
+
+.couponWrap {
+  display: flex;
+  gap: pxToRem(30);
+  margin-left: pxToRem(20);
+}
+
+@media (max-width: 900px) {
+  .inputGroup {
+    flex-direction: column;
+  }
+
+  .mainAddress {
+    max-width: none;
+  }
+
+  .inputWrap {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: pxToRem(10);
+  }
+
+  .mainAddress {
+    width: 100%;
+  }
+
+  .inputLabel {
+    padding: pxToRem(10) 0;
+  }
+
+  .checkLabel {
+    flex-direction: column;
+  }
+
+  .priceWrap {
+    padding: pxToRem(10);
+  }
+
+  .couponWrap {
+    display: flex;
+    margin: pxToRem(10) 0;
+    gap: pxToRem(20);
+  }
+
+  .input {
+    width: 100%;
+  }
+}
