@@ -1,0 +1,71 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.totalWrap {
+  display: flex;
+  justify-content: space-between;
+  padding: pxToRem(46) pxToRem(40);
+  border-top: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-light;
+  background-color: $secondary;
+}
+
+.roundWrap {
+  display: flex;
+  align-items: center;
+  gap: pxToRem(8);
+  padding: pxToRem(10) pxToRem(20);
+  border-radius: 20px;
+  background-color: $white;
+}
+
+.countWrap {
+  display: flex;
+  align-items: center;
+  gap: pxToRem(20);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: pxToRem(6);
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: pxToRem(16);
+}
+
+@media (max-width: 1480px) {
+  .totalWrap {
+    flex-direction: column;
+  }
+
+  .roundWrap {
+    justify-content: center;
+  }
+
+  .countWrap {
+    flex-direction: column;
+  }
+
+  .count {
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: pxToRem(10);
+  }
+
+  .total {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 690px) {
+  .count {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}

@@ -17,8 +17,7 @@ const buttonVariants = cva(
           'border border-gray-300 bg-background text-primary hover:text-white hover:bg-third hover:border-white',
         secondary:
           'bg-secondary text-primary hover:bg-primary hover:text-secondary',
-        dark:
-          'bg-black text-white rounded hover:bg-input',
+        dark: 'bg-black text-white rounded hover:bg-input',
         darkoutline:
           'border border-black bg-background text-black rounded hover:text-white hover:bg-input hover:border-input',
         ghost: 'hover:bg-secondary hover:text-primary',
@@ -30,6 +29,7 @@ const buttonVariants = cva(
         lg: 'px-8 py-1',
         icon: 'h-10 w-10',
         full: 'h-[60px] w-full py-4 text-2xl rounded-full',
+        normal: 'h-[60px] w-full max-w-[320px] py-4 text-2xl rounded-full',
         link: 'p-0',
       },
     },
