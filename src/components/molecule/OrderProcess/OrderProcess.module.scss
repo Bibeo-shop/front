@@ -1,0 +1,52 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: pxToRem(40);
+  margin-bottom: pxToRem(64);
+}
+.roundBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: pxToRem(140);
+  height: pxToRem(140);
+  font-weight: 600;
+  color: $gray-strong;
+  border: 1px solid $gray-light;
+  border-radius: 50%;
+}
+
+.blue {
+  color: $white;
+  background-color: $primary;
+}
+
+@media (max-width: 655px) {
+  .category {
+    flex-direction: column;
+    gap: pxToRem(10);
+    margin: 0 pxToRem(30) pxToRem(40) pxToRem(30);
+    padding: pxToRem(30) 0;
+    border: 1px solid $gray-light;
+    border-radius: 20px;
+  }
+
+  .roundBox {
+    width: 100%;
+    height: auto;
+    border: none;
+  }
+
+  .blue {
+    color: $primary;
+    background-color: $white;
+  }
+
+  .icon {
+    transform: rotate(90deg);
+  }
+}

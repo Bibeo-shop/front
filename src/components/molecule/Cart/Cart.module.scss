@@ -1,0 +1,30 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: pxToRem(60) pxToRem(40) pxToRem(80) pxToRem(40);
+  border: 1px solid $gray-light;
+  border-radius: 30px;
+}
+
+.sectionArea {
+  margin-bottom: pxToRem(50);
+}
+
+.btnWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.deleteBtn {
+  margin-top: pxToRem(8);
+}

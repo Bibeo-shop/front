@@ -1,0 +1,8 @@
+@import '@/styles/mixins';
+@import '@/styles/colors';
+
+.title {
+  display: flex;
+  padding: 0 0 pxToRem(18) pxToRem(16);
+  border-bottom: 1px solid $black;
+}

@@ -1,0 +1,28 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.orderComplete {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: pxToRem(60) pxToRem(40) pxToRem(80) pxToRem(40);
+  border: 1px solid $gray-light;
+  border-radius: 30px;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: pxToRem(40);
+}
+
+.textWrap {
+  text-align: center;
+}

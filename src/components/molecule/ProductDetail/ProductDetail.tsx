@@ -4,6 +4,7 @@ import ProductsTab from '../ProductsTab/ProductsTab'
 import ProductBuyInfo from '../ProductBuyInfo/ProductBuyInfo'
 import { CartIcon } from '@/components/atom/svg'
 import cn from './ProductDetail.module.scss'
+import Link from 'next/link'
 
 const ProductDetail = () => {
   return (
@@ -30,8 +31,10 @@ const ProductDetail = () => {
 
       <div className={cn.mobileOrderContainer}>
         <div className={cn.btnWrap}>
-          <Button size="full" variant="outline">
-            <CartIcon />
+          <Button size="full" variant="outline" asChild>
+            <Link href="/order/cart">
+              <CartIcon />
+            </Link>
           </Button>
           <Button size="full">구매하기</Button>
         </div>

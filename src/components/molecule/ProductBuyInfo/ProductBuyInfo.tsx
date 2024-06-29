@@ -12,6 +12,7 @@ import { Separator } from '@/components/ui/separator'
 import { CartIcon, StarIcon, MinusIcon, PlusIcon } from '@/components/atom/svg'
 import cn from './ProductBuyInfo.module.scss'
 import SelectOption from '@/components/atom/SelectOption/SelectOption'
+import Link from 'next/link'
 
 const ProductBuyInfo = () => {
   return (
@@ -173,7 +174,9 @@ const ProductBuyInfo = () => {
         <Button size="full" variant="outline">
           <CartIcon />
         </Button>
-        <Button size="full">구매하기</Button>
+        <Button size="full" asChild>
+          <Link href="/order/order">구매하기</Link>
+        </Button>
       </div>
     </div>
   )
