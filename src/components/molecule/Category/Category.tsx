@@ -14,21 +14,19 @@ export const categoryData = [
 
 const Category = () => {
   return (
-    <div className={cn.category}>
-      <nav className={cn.categoryWrap}>
-        <ul>
-          {categoryData.map((item) => (
-            <li key={item.id}>
-              <Link href="/products">
-                <Typography color="primary" weight="800">
-                  {item.category}
-                </Typography>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
+    <nav className={cn.categoryWrap}>
+      <ul>
+        {categoryData.map((item) => (
+          <li key={item.id}>
+            <Link href="/products">
+              <Typography color="primary" weight="800">
+                {item.category}
+              </Typography>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   )
 }
 
