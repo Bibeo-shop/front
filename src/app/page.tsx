@@ -1,7 +1,9 @@
+import Main from '@/components/molecule/Main/Main'
+
 export default function Home() {
   return (
-<div>
-  main page
-</div>
+    <>
+      <Main />
+    </>
   )
 }

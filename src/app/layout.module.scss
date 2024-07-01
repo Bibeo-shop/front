@@ -7,20 +7,17 @@
   top: 0;
   width: 100%;
   padding: 0 pxToRem(60);
-  background-color: $white;
 }
 
 .containerWrap {
   display: flex;
   justify-content: center;
   margin-top: pxToRem(126);
+  position: relative;
 }
 
 .mainWrap {
-  padding-top: pxToRem(46);
-  margin: 0 pxToRem(60);
   width: 100%;
-  max-width: 1400px;
 }
 
 .container {
@@ -31,15 +28,9 @@
   margin-bottom: pxToRem(200);
 }
 
-@media (max-width: 1680px) {
-  .mainWrap {
-    max-width: 1200px;
-  }
-}
-
-@media (max-width: 1480px) {
-  .mainWrap {
-    max-width: 1000px;
+@include breakpoint('tablet') {
+  .headerWrap {
+    background-color: $white;
   }
 }
 

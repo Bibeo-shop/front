@@ -22,12 +22,12 @@
 .menuWrap {
   display: flex;
   align-items: center;
-  background-color: $white;
 
   & li {
     margin-right: pxToRem(26);
     padding: pxToRem(10);
     border-radius: 50%;
+    background-color: $white;
 
     &:hover {
       background-color: $third;
@@ -48,5 +48,6 @@
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+    background-color: $white;
   }
 }
