@@ -1,15 +1,17 @@
 'use client'
 
-import axios from 'axios'
 import Link from 'next/link'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { postLogin } from '@/api/login'
 import { Button } from '@/components/ui/button'
 import { LoginForm } from '@/types'
 import FormField from '../FormField/FormField'
+import { useLogin } from '@/hooks/useLogin'
 import cn from './LoginForm.module.scss'
+import { AxiosError } from 'axios'
 
 const LoginForm = () => {
+  const loginMutation = useLogin()
+
   const {
     register,
     handleSubmit,
@@ -22,22 +24,21 @@ const LoginForm = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<LoginForm> = async (data) => {
-    try {
-      const res = await postLogin(data)
-      if (res.data) {
-        window.localStorage.setItem('token', res.data.token)
-        window.location.href = '/'
-      }
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
-        if (err.response?.status === 401) {
-          alert('로그인에 실패했습니다. 계정 정보를 다시 확인해 주세요.')
+  const onSubmit: SubmitHandler<LoginForm> = (data) => {
+    loginMutation.mutate(data, {
+      onError: (error) => {
+        if (error instanceof AxiosError) {
+          if (error.response?.status === 401) {
+            alert('로그인에 실패했습니다. 계정 정보를 다시 확인해 주세요.')
+          } else {
+            alert('로그인 중 오류가 발생했습니다. 다시 시도해 주세요.')
+          }
+        } else {
+          alert('로그인 중 알 수 없는 오류가 발생했습니다.')
         }
-      }
-    }
+      },
+    })
   }
-
   return (
     <form className={cn.container} onSubmit={handleSubmit(onSubmit)}>
       <div className={cn.inputContainer}>
