@@ -5,12 +5,13 @@ import cn from './Typography.module.scss'
 export interface TextProps {
   children: ReactNode
   type?: React.ElementType
-  size?: '12' | '14' | '16' | '18' | '20' | '24' | '36'
+  size?: '12' | '14' | '16' | '18' | '20' | '24' | '36' | '40'
   color?:
     | 'black'
     | 'red'
     | 'white'
     | 'primary'
+    | 'third'
     | 'gray-strong'
     | 'gray-normal'
     | 'gray-light'
@@ -36,10 +37,12 @@ const Typography: React.FC<TextProps> = ({
       [cn.fontSize20]: size === '20',
       [cn.fontSize24]: size === '24',
       [cn.fontSize36]: size === '36',
+      [cn.fontSize40]: size === '40',
       [cn.black]: color === 'black',
       [cn.red]: color === 'red',
       [cn.white]: color === 'white',
       [cn.primary]: color === 'primary',
+      [cn.third]: color === 'third',
       [cn.grayStrong]: color === 'gray-strong',
       [cn.grayNormal]: color === 'gray-normal',
       [cn.grayLight]: color === 'gray-light',

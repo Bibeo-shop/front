@@ -5721,6 +5721,9 @@ __metadata:
     axios: "npm:^1.7.2"
     class-variance-authority: "npm:^0.7.0"
     clsx: "npm:^2.1.1"
+    embla-carousel-autoplay: "npm:^8.1.5"
+    embla-carousel-class-names: "npm:^8.1.5"
+    embla-carousel-react: "npm:^8.1.5"
     eslint: "npm:8.57.0"
     eslint-config-next: "npm:14.2.3"
     eslint-plugin-storybook: "npm:^0.8.0"
@@ -7220,6 +7223,52 @@ __metadata:
     minimalistic-assert: "npm:^1.0.1"
     minimalistic-crypto-utils: "npm:^1.0.1"
   checksum: 10c0/3e591e93783a1b66f234ebf5bd3a8a9a8e063a75073a35a671e03e3b25253b6e33ac121f7efe9b8808890fffb17b40596cc19d01e6e8d1fa13b9a56ff65597c8
+  languageName: node
+  linkType: hard
+
+"embla-carousel-autoplay@npm:^8.1.5":
+  version: 8.1.5
+  resolution: "embla-carousel-autoplay@npm:8.1.5"
+  peerDependencies:
+    embla-carousel: 8.1.5
+  checksum: 10c0/1798bdff3684e579cadabe5e2667405a0313dd348d398194f958a7e4d840d256026e9650856bbd4045d785b04ec4a02fa0f9e7f598cfd6b68f13689dbd497812
+  languageName: node
+  linkType: hard
+
+"embla-carousel-class-names@npm:^8.1.5":
+  version: 8.1.5
+  resolution: "embla-carousel-class-names@npm:8.1.5"
+  peerDependencies:
+    embla-carousel: 8.1.5
+  checksum: 10c0/0f955dc6086bab324ed0ef724fa6f0a76ec65776eda798d2657a7799957c52f270bc0b3b32c29e9c848d0365ce5cd4cd216c3c3c1fc757e572a4e9a9667965fd
+  languageName: node
+  linkType: hard
+
+"embla-carousel-react@npm:^8.1.5":
+  version: 8.1.5
+  resolution: "embla-carousel-react@npm:8.1.5"
+  dependencies:
+    embla-carousel: "npm:8.1.5"
+    embla-carousel-reactive-utils: "npm:8.1.5"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.1 || ^18.0.0
+  checksum: 10c0/a8c64e948f7bbe11a5d62ca4ebd70030a7a0dea2d772ab0c545026f2facea493bd5ddabccdb915922ed41f8af44d61140ae485521fb3495af8e13d7e43405aed
+  languageName: node
+  linkType: hard
+
+"embla-carousel-reactive-utils@npm:8.1.5":
+  version: 8.1.5
+  resolution: "embla-carousel-reactive-utils@npm:8.1.5"
+  peerDependencies:
+    embla-carousel: 8.1.5
+  checksum: 10c0/813a358f7372ddeb7a49e637e21b1580bda42797f97cbb8f7a2ad63a1803b0f2a9d2ecd5f0c088bd2447bb0a6c932f31e5c820698d83324a23548bd9242deb41
+  languageName: node
+  linkType: hard
+
+"embla-carousel@npm:8.1.5":
+  version: 8.1.5
+  resolution: "embla-carousel@npm:8.1.5"
+  checksum: 10c0/5fa18cf332654ce3f380874e41caa6a520a04c5d43f2832f1d797b74e822f271de61f27346155fc3a8321633f1968b7b808ad0d56152305c8696ff5d12d3200f
   languageName: node
   linkType: hard
 

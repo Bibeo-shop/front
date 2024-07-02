@@ -1,0 +1,25 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 pxToRem(60);
+  padding-top: pxToRem(46);
+}
+
+
+@media (max-width: 1680px) {
+  .wrap {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1480px) {
+  .wrap {
+    max-width: 1000px;
+  }
+}

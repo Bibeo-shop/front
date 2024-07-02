@@ -27,6 +27,9 @@
 .fontSize36 {
   font-size: pxToRem(36);
 }
+.fontSize40 {
+  font-size: pxToRem(40);
+}
 
 .black {
   color: $black;
@@ -42,6 +45,9 @@
 
 .primary {
   color: $primary;
+}
+.third {
+  color: $third;
 }
 
 .grayStrong {
