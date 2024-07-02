@@ -10,7 +10,7 @@ import Typography from '@/components/atom/Typography/Typography'
 import SelectDateOption from '@/components/atom/SelectDateOption/SelectDateOption'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { SignUpFormProps } from '@/types'
+import { SignUpForm } from '@/types'
 import { formatPhoneNumber } from '@/utils/formatNumber'
 import { messages } from '@/utils/message'
 import { checkValidDate } from '@/utils/checkValidDate'
@@ -23,7 +23,7 @@ const SignUpForm = () => {
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<SignUpFormProps>({
+  } = useForm<SignUpForm>({
     mode: 'onSubmit',
     defaultValues: {
       email: '',
@@ -50,7 +50,7 @@ const SignUpForm = () => {
     console.log('zipcode function')
   }
 
-  const onSubmit: SubmitHandler<SignUpFormProps> = async (data) => {
+  const onSubmit: SubmitHandler<SignUpForm> = async (data) => {
     try {
       const { birthDay, userAddress, passwordConfirm, checked, ...rest } = data
       if (!checked) {

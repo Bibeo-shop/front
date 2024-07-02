@@ -8,7 +8,7 @@ import { postLogin } from '@/api/login'
 import Typography from '@/components/atom/Typography/Typography'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { LoginFormProps } from '@/types'
+import { LoginForm } from '@/types'
 import cn from './LoginForm.module.scss'
 import { messages } from '@/utils/message'
 
@@ -17,7 +17,7 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormProps>({
+  } = useForm<LoginForm>({
     mode: 'onSubmit',
     defaultValues: {
       email: '',
@@ -25,7 +25,7 @@ const LoginForm = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<LoginFormProps> = async (data) => {
+  const onSubmit: SubmitHandler<LoginForm> = async (data) => {
     try {
       const res = await postLogin(data)
       if (res.data) {

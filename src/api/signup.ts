@@ -1,6 +1,6 @@
 import axiosInstance from './axiosInstance'
-import { SignUpDataProps } from '@/types'
+import { SignUpData } from '@/types'
 
-export const postSignUp = (data: SignUpDataProps) => {
+export const postSignUp = (data: SignUpData) => {
   return axiosInstance.post(`/users/signup`, data)
 }
