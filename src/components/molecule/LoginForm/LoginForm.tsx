@@ -3,14 +3,11 @@
 import axios from 'axios'
 import Link from 'next/link'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { ErrorMessage } from '@hookform/error-message'
 import { postLogin } from '@/api/login'
-import Typography from '@/components/atom/Typography/Typography'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { LoginForm } from '@/types'
+import FormField from '../FormField/FormField'
 import cn from './LoginForm.module.scss'
-import { messages } from '@/utils/message'
 
 const LoginForm = () => {
   const {
@@ -41,47 +38,41 @@ const LoginForm = () => {
     }
   }
 
-  const emailRegister = register('email', {
-    required: { value: true, message: messages.isEmpty('이메일') },
-    pattern: {
-      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-      message: messages.isPattern('이메일'),
-    },
-  })
-  const passwordRegister = register('password', {
-    required: { value: true, message: messages.isEmpty('비밀번호') },
-    maxLength: { value: 16, message: messages.maxLength('비밀번호', 16) },
-    minLength: { value: 8, message: messages.minLength('비밀번호', 2) },
-  })
-
   return (
     <form className={cn.container} onSubmit={handleSubmit(onSubmit)}>
       <div className={cn.inputContainer}>
         <div className={cn.inputWrap}>
-          <Input id="email" type="email" label="이메일" {...emailRegister} />
-          <ErrorMessage
+          <FormField
+            id="email"
+            type="email"
+            label="이메일"
+            register={register}
             errors={errors}
-            name="email"
-            render={({ message }) => (
-              <Typography color="red" size="14" className={cn.message}>
-                {message}
-              </Typography>
-            )}
+            rules={{
+              required: { value: true, message: '이메일을 입력해주세요.' },
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: '올바른 이메일 형식이 아닙니다.',
+              },
+            }}
           />
-          <Input
+          <FormField
             id="password"
             type="password"
             label="비밀번호"
-            {...passwordRegister}
-          />
-          <ErrorMessage
+            register={register}
             errors={errors}
-            name="password"
-            render={({ message }) => (
-              <Typography color="red" size="14" className={cn.message}>
-                {message}
-              </Typography>
-            )}
+            rules={{
+              required: { value: true, message: '비밀번호를 입력해주세요.' },
+              minLength: {
+                value: 8,
+                message: '비밀번호는 최소 8자 이상이어야 합니다.',
+              },
+              maxLength: {
+                value: 16,
+                message: '비밀번호는 최대 16자까지 가능합니다.',
+              },
+            }}
           />
         </div>
         <div className={cn.linkWrap}>
