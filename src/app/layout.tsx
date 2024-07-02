@@ -1,8 +1,9 @@
 import '@/styles/globals.scss'
 import RQProvider from '@/components/RQProvider'
 import Header from '@/components/molecule/Header/Header'
-import cn from './layout.module.scss'
 import Category from '@/components/molecule/Category/Category'
+import Footer from '@/components/molecule/Footer/Footer'
+import cn from './layout.module.scss'
 
 export const metadata = {
   title: 'BibeoShop',
@@ -29,6 +30,7 @@ export default function RootLayout({
               <div className={cn.container}>{children}</div>
             </main>
           </div>
+          <Footer />
         </RQProvider>
       </body>
     </html>

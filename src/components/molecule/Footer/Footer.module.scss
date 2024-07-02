@@ -1,0 +1,9 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.footer {
+  display:flex;
+  padding: pxToRem(100);
+  height: pxToRem(300);
+  background-color: $black;
+}
