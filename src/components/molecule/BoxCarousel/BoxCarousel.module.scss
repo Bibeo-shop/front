@@ -1,0 +1,73 @@
+@import '@/styles/colors';
+@import '@/styles/mixins';
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: pxToRem(800);
+}
+
+.item {
+  flex-basis: 33.3333%;
+}
+
+.imageContainer,
+.imageLink {
+  width: 100%;
+  aspect-ratio: 1/2;
+}
+
+.imageLink {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background-color: $primary;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  background-color: $gray-light;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.prev {
+  left: pxToRem(10);
+}
+
+.next {
+  right: pxToRem(10);
+}
+
+@media (max-width: 1034px) {
+  .imageContainer,
+  .imageLink,
+  .image {
+    border-radius: pxToRem(20);
+  }
+}
+
+@media (max-width: 850px) {
+  .item {
+    flex-basis: 50%;
+  }
+}
+
+@include breakpoint('mobile') {
+  .carousel {
+    max-width: pxToRem(340);
+  }
+
+  .item {
+    flex-basis: 100%;
+  }
+}
