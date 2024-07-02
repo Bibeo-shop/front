@@ -15,6 +15,7 @@ import { formatPhoneNumber } from '@/utils/formatNumber'
 import { messages } from '@/utils/message'
 import { checkValidDate } from '@/utils/checkValidDate'
 import cn from './SignUpForm.module.scss'
+import { useSignUp } from '@/hooks/useSignUp'
 
 const SignUpForm = () => {
   const {
@@ -43,53 +44,41 @@ const SignUpForm = () => {
   })
 
   const terms = useTerms()
-
   const currentYear = new Date().getFullYear()
+  const signUpMutation = useSignUp()
 
   const handleFindZipcode = () => {
     console.log('zipcode function')
   }
 
   const onSubmit: SubmitHandler<SignUpForm> = async (data) => {
-    try {
-      const { birthDay, userAddress, passwordConfirm, checked, ...rest } = data
-      if (!checked) {
-        alert('약관에 동의해주세요.')
-        return
-      } else if (data.password !== passwordConfirm) {
+    const { birthDay, userAddress, passwordConfirm, checked, ...rest } = data
+    if (!checked) {
+      alert('약관에 동의해주세요.')
+      return
+    } else if (data.password !== passwordConfirm) {
+      setError(
+        'passwordConfirm',
+        { message: '비밀번호가 일치하지 않습니다.' },
+        { shouldFocus: true }
+      )
+      return
+    }
+
+    if (birthDay && userAddress) {
+      const birth_day = `${birthDay.year}-${birthDay.month.padStart(2, '0')}-${birthDay.day.padStart(2, '0')}`
+      const validBirth = checkValidDate(birth_day)
+      if (!validBirth) {
         setError(
-          'passwordConfirm',
-          { message: '비밀번호가 일치하지 않습니다.' },
+          'birthDay.year',
+          { message: '유효하지 않은 날짜입니다.' },
           { shouldFocus: true }
         )
         return
       }
-
-      if (birthDay && userAddress) {
-        const birth_day = `${birthDay.year}-${birthDay.month.padStart(2, '0')}-${birthDay.day.padStart(2, '0')}`
-        const validBirth = checkValidDate(birth_day)
-        if (!validBirth) {
-          setError(
-            'birthDay.year',
-            { message: '유효하지 않은 날짜입니다.' },
-            { shouldFocus: true }
-          )
-          return
-        }
-        const address = `${userAddress.mainAddress} ${userAddress.detailAddress}`
-        const signUpData = { ...rest, birth_day, address }
-        const res = await postSignUp(signUpData)
-        if (res.data.message === 'User creation successful') {
-          alert('회원가입 완료!')
-          window.location.href = '/login'
-        }
-      }
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
-        if (err.response?.status === 400) {
-          alert('사용할 수 없는 이메일입니다.')
-        }
-      }
+      const address = `${userAddress.mainAddress} ${userAddress.detailAddress}`
+      const signUpData = { ...rest, birth_day, address }
+      signUpMutation.mutate(signUpData)
     }
   }
 
