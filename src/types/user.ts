@@ -1,11 +1,22 @@
-type UserCommonProps = {
+interface UserData {
   email: string
   password: string
 }
 
-export type LoginFormProps = UserCommonProps
+export interface LoginForm extends UserData {}
 
-export type SignUpFormProps = UserCommonProps & {
+interface BirthDay {
+  year: string
+  month: string
+  day: string
+}
+
+interface UserAddress {
+  mainAddress: string
+  detailAddress: string
+}
+
+export interface SignUpForm extends UserData {
   phonenumber: string
   name: string
   zipcode: string
@@ -16,24 +27,13 @@ export type SignUpFormProps = UserCommonProps & {
   checked: boolean
 }
 
-type BirthDay = {
-  year: string
-  month: string
-  day: string
-}
-
-type UserAddress = {
-  mainAddress: string
-  detailAddress: string
-}
-
-export type SignUpDataProps = {
-  email: string;
-  password: string;
-  phonenumber: string;
-  name: string;
-  zipcode: string;
-  address: string;
-  birth_day: string;
-  agreement: number;
+export interface SignUpData {
+  email: string
+  password: string
+  phonenumber: string
+  name: string
+  zipcode: string
+  address: string
+  birth_day: string
+  agreement: number
 }

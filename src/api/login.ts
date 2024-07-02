@@ -1,6 +1,7 @@
+import { LoginForm } from '@/types'
 import axiosInstance from './axiosInstance'
-import { LoginFormProps } from '@/types'
 
-export const postLogin = (data: LoginFormProps) => {
-  return axiosInstance.post(`/users/login`, data)
+export const postLogin = async (data: LoginForm) => {
+  const response = await axiosInstance.post(`/users/login`, data)
+  return response.data
 }
