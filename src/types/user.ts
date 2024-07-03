@@ -11,16 +11,19 @@ interface BirthDay {
   day: string
 }
 
-interface UserAddress {
+
+interface AddressForm {
+  zipcode: string
   mainAddress: string
   detailAddress: string
 }
 
-export interface SignUpForm extends UserData {
+export interface SignUpForm extends UserData, AddressForm {
   phonenumber: string
   name: string
   zipcode: string
-  userAddress: UserAddress
+  mainAddress: string
+  detailAddress: string
   birthDay: BirthDay
   agreement: number
   passwordConfirm: string
