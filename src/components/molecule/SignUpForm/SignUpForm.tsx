@@ -1,10 +1,8 @@
 'use client'
 
-import axios from 'axios'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import Link from 'next/link'
-import { postSignUp } from '@/api/signup'
 import { useTerms } from '@/hooks/useTerms'
 import Typography from '@/components/atom/Typography/Typography'
 import SelectDateOption from '@/components/atom/SelectDateOption/SelectDateOption'
@@ -14,8 +12,9 @@ import { SignUpForm } from '@/types'
 import { formatPhoneNumber } from '@/utils/formatNumber'
 import { messages } from '@/utils/message'
 import { checkValidDate } from '@/utils/checkValidDate'
-import cn from './SignUpForm.module.scss'
 import { useSignUp } from '@/hooks/useSignUp'
+import { useAddressSearch } from '@/hooks/useAddressSearch'
+import cn from './SignUpForm.module.scss'
 
 const SignUpForm = () => {
   const {
@@ -24,6 +23,7 @@ const SignUpForm = () => {
     handleSubmit,
     formState: { errors },
     setError,
+    setValue,
   } = useForm<SignUpForm>({
     mode: 'onSubmit',
     defaultValues: {
@@ -33,26 +33,28 @@ const SignUpForm = () => {
       phonenumber: '',
       name: '',
       zipcode: '',
-      userAddress: {
-        mainAddress: '00시 00구 00동',
-        detailAddress: '101호',
-      },
+      mainAddress: '',
+      detailAddress: '',
       birthDay: { year: '', month: '', day: '' },
       agreement: 0,
       checked: false,
     },
   })
+  const { handleClick } = useAddressSearch(setValue)
 
   const terms = useTerms()
   const currentYear = new Date().getFullYear()
   const signUpMutation = useSignUp()
 
-  const handleFindZipcode = () => {
-    console.log('zipcode function')
-  }
-
   const onSubmit: SubmitHandler<SignUpForm> = async (data) => {
-    const { birthDay, userAddress, passwordConfirm, checked, ...rest } = data
+    const {
+      birthDay,
+      mainAddress,
+      detailAddress,
+      passwordConfirm,
+      checked,
+      ...rest
+    } = data
     if (!checked) {
       alert('약관에 동의해주세요.')
       return
@@ -65,7 +67,7 @@ const SignUpForm = () => {
       return
     }
 
-    if (birthDay && userAddress) {
+    if (birthDay && mainAddress) {
       const birth_day = `${birthDay.year}-${birthDay.month.padStart(2, '0')}-${birthDay.day.padStart(2, '0')}`
       const validBirth = checkValidDate(birth_day)
       if (!validBirth) {
@@ -76,7 +78,7 @@ const SignUpForm = () => {
         )
         return
       }
-      const address = `${userAddress.mainAddress} ${userAddress.detailAddress}`
+      const address = `${mainAddress} ${detailAddress}`.trim()
       const signUpData = { ...rest, birth_day, address }
       signUpMutation.mutate(signUpData)
     }
@@ -107,13 +109,6 @@ const SignUpForm = () => {
   })
 
   const passWordConfirmRegister = register('passwordConfirm')
-
-  const zipcodeRegister = register('zipcode', {
-    required: { value: true, message: messages.isEmpty('배송지 주소를') },
-  })
-
-  const mainAddressRegister = register('userAddress.mainAddress')
-  const detailAddressRegister = register('userAddress.detailAddress')
 
   return (
     <div className={cn.container}>
@@ -245,34 +240,26 @@ const SignUpForm = () => {
                 )}
               />
             </div>
-            <div className={cn.addressSearch}>
-              <Input
-                id="signupZipcode"
-                type="text"
-                label="우편번호"
-                className={cn.zipcode}
-                readOnly
-                {...zipcodeRegister}
-              />
-              <Button variant="outline" onClick={handleFindZipcode}>
-                우편번호검색
-              </Button>
-            </div>
-            <Input
-              id="signupMainAddress"
-              type="text"
-              label="주소"
-              readOnly
-              {...mainAddressRegister}
-            />
             <div>
-              <Input
-                id="signupDetailAddress"
-                type="text"
-                className="indent-0"
-                {...detailAddressRegister}
-                readOnly
-              />
+              <div className={cn.addressSearch}>
+                <Input
+                  id="signupZipcode"
+                  type="text"
+                  label="우편번호"
+                  className={cn.zipcode}
+                  readOnly
+                  {...register('zipcode', {
+                    required: {
+                      value: true,
+                      message: messages.isEmpty('주소를'),
+                    },
+                  })}
+                />
+
+                <Button variant="outline" onClick={handleClick}>
+                  우편번호검색
+                </Button>
+              </div>
               <ErrorMessage
                 errors={errors}
                 name="zipcode"
@@ -283,6 +270,22 @@ const SignUpForm = () => {
                 )}
               />
             </div>
+            <Input
+              id="signupMainAddress"
+              type="text"
+              label="주소"
+              readOnly
+              {...register('mainAddress')}
+            />
+            <div>
+              <Input
+                id="signupDetailAddress"
+                type="text"
+                className="indent-0"
+                {...register('detailAddress')}
+              />
+            </div>
+
             <div className={cn.birthMessage}>
               <div className={cn.birthday}>
                 <Typography
@@ -294,82 +297,61 @@ const SignUpForm = () => {
                   생일
                 </Typography>
                 <Controller
-                  name="birthDay.year"
+                  name="birthDay"
                   control={control}
                   rules={{
-                    required: messages.isEmpty('년도를'),
+                    validate: (value) => {
+                      if (!value.year && !value.month && !value.day) {
+                        return messages.isEmpty('생일을')
+                      }
+                      if (!value.year || !value.month || !value.day) {
+                        return messages.isEmpty('생일을 모두')
+                      }
+                      return true
+                    },
                   }}
                   render={({ field }) => (
-                    <SelectDateOption
-                      placeholder="년"
-                      suffix="년"
-                      start={1900}
-                      end={currentYear}
-                      reverse={true}
-                      className={cn.yearSelect}
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
+                    <>
+                      <SelectDateOption
+                        placeholder="년"
+                        suffix="년"
+                        start={1900}
+                        end={currentYear}
+                        reverse={true}
+                        className={cn.yearSelect}
+                        value={field.value.year}
+                        onChange={(value) =>
+                          field.onChange({ ...field.value, year: value })
+                        }
+                      />
+                      <SelectDateOption
+                        placeholder="월"
+                        suffix="월"
+                        start={1}
+                        end={12}
+                        value={field.value.month}
+                        onChange={(value) =>
+                          field.onChange({ ...field.value, month: value })
+                        }
+                      />
+                      <SelectDateOption
+                        placeholder="일"
+                        suffix="일"
+                        start={1}
+                        end={31}
+                        value={field.value.day}
+                        onChange={(value) =>
+                          field.onChange({ ...field.value, day: value })
+                        }
+                      />
+                    </>
                   )}
                 />
-                <Controller
-                  name="birthDay.month"
-                  control={control}
-                  rules={{
-                    required: messages.isEmpty('월을'),
-                  }}
-                  render={({ field }) => (
-                    <SelectDateOption
-                      placeholder="월"
-                      suffix="월"
-                      start={1}
-                      end={12}
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                <Controller
-                  name="birthDay.day"
-                  control={control}
-                  rules={{
-                    required: messages.isEmpty('일을'),
-                  }}
-                  render={({ field }) => (
-                    <SelectDateOption
-                      placeholder="일"
-                      suffix="일"
-                      start={1}
-                      end={31}
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                <div />
               </div>
 
               <ErrorMessage
                 errors={errors}
-                name="birthDay.year"
-                render={({ message }) => (
-                  <Typography color="red" size="14" className={cn.message}>
-                    {message}
-                  </Typography>
-                )}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="birthDay.month"
-                render={({ message }) => (
-                  <Typography color="red" size="14" className={cn.message}>
-                    {message}
-                  </Typography>
-                )}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="birthDay.day"
+                name="birthDay"
                 render={({ message }) => (
                   <Typography color="red" size="14" className={cn.message}>
                     {message}
