@@ -24,7 +24,7 @@ export const useAddressSearch = (setValue: UseFormSetValue<SignUpForm>) => {
         fullAddress += extraAddress !== '' ? ` (${extraAddress})` : ''
       }
 
-      setValue('zipcode', data.zonecode)
+      setValue('zipcode', data.zonecode, { shouldValidate: true })
       setValue('mainAddress', fullAddress)
       setValue('detailAddress', '')
     },

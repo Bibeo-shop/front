@@ -5,13 +5,6 @@ interface UserData {
 
 export interface LoginForm extends UserData {}
 
-interface BirthDay {
-  year: string
-  month: string
-  day: string
-}
-
-
 interface AddressForm {
   zipcode: string
   mainAddress: string
@@ -24,7 +17,11 @@ export interface SignUpForm extends UserData, AddressForm {
   zipcode: string
   mainAddress: string
   detailAddress: string
-  birthDay: BirthDay
+  birthDay: {
+    year: string
+    month: string
+    day: string
+  }
   agreement: number
   passwordConfirm: string
   checked: boolean

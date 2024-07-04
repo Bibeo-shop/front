@@ -297,82 +297,61 @@ const SignUpForm = () => {
                   생일
                 </Typography>
                 <Controller
-                  name="birthDay.year"
+                  name="birthDay"
                   control={control}
                   rules={{
-                    required: messages.isEmpty('년도를'),
+                    validate: (value) => {
+                      if (!value.year && !value.month && !value.day) {
+                        return messages.isEmpty('생일을')
+                      }
+                      if (!value.year || !value.month || !value.day) {
+                        return messages.isEmpty('생일을 모두')
+                      }
+                      return true
+                    },
                   }}
                   render={({ field }) => (
-                    <SelectDateOption
-                      placeholder="년"
-                      suffix="년"
-                      start={1900}
-                      end={currentYear}
-                      reverse={true}
-                      className={cn.yearSelect}
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
+                    <>
+                      <SelectDateOption
+                        placeholder="년"
+                        suffix="년"
+                        start={1900}
+                        end={currentYear}
+                        reverse={true}
+                        className={cn.yearSelect}
+                        value={field.value.year}
+                        onChange={(value) =>
+                          field.onChange({ ...field.value, year: value })
+                        }
+                      />
+                      <SelectDateOption
+                        placeholder="월"
+                        suffix="월"
+                        start={1}
+                        end={12}
+                        value={field.value.month}
+                        onChange={(value) =>
+                          field.onChange({ ...field.value, month: value })
+                        }
+                      />
+                      <SelectDateOption
+                        placeholder="일"
+                        suffix="일"
+                        start={1}
+                        end={31}
+                        value={field.value.day}
+                        onChange={(value) =>
+                          field.onChange({ ...field.value, day: value })
+                        }
+                      />
+                    </>
                   )}
                 />
-                <Controller
-                  name="birthDay.month"
-                  control={control}
-                  rules={{
-                    required: messages.isEmpty('월을'),
-                  }}
-                  render={({ field }) => (
-                    <SelectDateOption
-                      placeholder="월"
-                      suffix="월"
-                      start={1}
-                      end={12}
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                <Controller
-                  name="birthDay.day"
-                  control={control}
-                  rules={{
-                    required: messages.isEmpty('일을'),
-                  }}
-                  render={({ field }) => (
-                    <SelectDateOption
-                      placeholder="일"
-                      suffix="일"
-                      start={1}
-                      end={31}
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                <div />
               </div>
 
               <ErrorMessage
                 errors={errors}
-                name="birthDay.year"
-                render={({ message }) => (
-                  <Typography color="red" size="14" className={cn.message}>
-                    {message}
-                  </Typography>
-                )}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="birthDay.month"
-                render={({ message }) => (
-                  <Typography color="red" size="14" className={cn.message}>
-                    {message}
-                  </Typography>
-                )}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="birthDay.day"
+                name="birthDay"
                 render={({ message }) => (
                   <Typography color="red" size="14" className={cn.message}>
                     {message}
