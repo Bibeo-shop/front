@@ -5,6 +5,8 @@ interface PriceTextProps {
   color?: TextProps['color']
   weight?: TextProps['weight']
   size?: TextProps['size']
+  suffixes?: string
+  className?: string
 }
 
 const PriceText = ({
@@ -12,6 +14,8 @@ const PriceText = ({
   color = 'black',
   weight = '600',
   size = '16',
+  suffixes,
+  className,
 }: PriceTextProps) => {
   const priceNumber = typeof price === 'string' ? parseInt(price) : price
 
@@ -20,14 +24,10 @@ const PriceText = ({
   }
   const replacePrice = priceNumber.toLocaleString()
   return (
-    <div>
-      <Typography color={color} weight={weight} size={size}>
-        {replacePrice}
-      </Typography>
-      <Typography weight={weight} size={size}>
-        원
-      </Typography>
-    </div>
+    <Typography color={color} weight={weight} size={size} className={className}>
+      {replacePrice}
+      {suffixes}
+    </Typography>
   )
 }
 

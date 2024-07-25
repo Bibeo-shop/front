@@ -1,6 +1,10 @@
-const PlusIcon = () => {
+interface PlusIconProps {
+  onClick?: () => void
+}
+
+const PlusIcon: React.FC<PlusIconProps> = ({ onClick }) => {
   return (
-    <div>
+    <div onClick={onClick}>
       <svg
         width="24"
         height="24"

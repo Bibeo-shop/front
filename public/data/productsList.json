@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "실버 925 블랙 오닉스 큐빅 귀걸이",
+    "product_image_url": "/images/product_image.png",
+    "rate": 4.9,
+    "review_count": 5231,
+    "price": 13000,
+    "retail_price": 15000,
+    "status": ["NEW", "EVENT","무료배송"]
+  },
+  {
+    "id": 2,
+    "name": "실버 925 블랙 오닉스 큐빅 귀걸이",
+    "product_image_url": "/images/product_image1.png",
+    "rate": 4.9,
+    "review_count": 5231,
+    "price": 13000,
+    "retail_price": 15000,
+    "status": ["EVENT","무료배송"]
+  },
+  {
+    "id": 3,
+    "name": "실버 925 블랙 오닉스 큐빅 귀걸이",
+    "product_image_url": "/images/product_image2.png",
+    "rate": 4.9,
+    "review_count": 5231,
+    "price": 13000,
+    "retail_price": 15000,
+    "status": ["품절","무료배송"]
+  },
+  {
+    "id": 4,
+    "name": "실버 925 블랙 오닉스 큐빅 귀걸이",
+    "product_image_url": "/images/product_image3.png",
+    "rate": 4.9,
+    "review_count": 5231,
+    "price": 13000,
+    "retail_price": 15000,
+    "status": ["품절"]
+  },
+  {
+    "id": 5,
+    "name": "실버 925 블랙 오닉스 큐빅 귀걸이",
+    "product_image_url": "/images/product_image4.png",
+    "rate": 4.9,
+    "review_count": 5231,
+    "price": 13000,
+    "retail_price": 15000,
+    "status": ["NEW","EVENT","무료배송","품절"]
+  },
+  {
+    "id": 6,
+    "name": "실버 925 블랙 오닉스 큐빅 귀걸이",
+    "product_image_url": "/images/product_image5.png",
+    "rate": 3.0,
+    "review_count": 5231,
+    "price": 13000,
+    "retail_price": 15000,
+    "status": ["무료배송"]
+  }
+]

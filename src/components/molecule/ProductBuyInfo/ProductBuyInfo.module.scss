@@ -80,16 +80,27 @@
 }
 
 .selectWrap {
-  margin: pxToRem(20) pxToRem(16);
-  border: 1px solid $primary;
+  margin: pxToRem(20) 0;
+  border: 2px solid $primary;
+  border-radius: 10px;
 }
 
 .optionContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: pxToRem(20) pxToRem(16);
   border: 1px solid $gray-light;
   border-radius: pxToRem(12);
+  margin: pxToRem(10) 0;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: pxToRem(30);
+  height: pxToRem(30);
 }
 
 .optionGroup {
@@ -109,11 +120,11 @@
   display: flex;
   margin-top: pxToRem(30);
   gap: pxToRem(10);
+}
 
-  button:first-child {
-    max-width: pxToRem(62);
-    border-radius: pxToRem(12);
-  }
+.btnCart {
+  max-width: pxToRem(62);
+  border-radius: pxToRem(12);
 }
 
 @include breakpoint('tablet') {

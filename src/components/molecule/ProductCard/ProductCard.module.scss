@@ -54,6 +54,11 @@
   margin-top: pxToRem(6);
 }
 
+.priceGroup {
+  display: flex;
+  align-items: flex-end;
+}
+
 .beforePrice {
   margin-left: pxToRem(2);
   text-decoration: line-through;
@@ -61,4 +66,5 @@
 
 .rateWrap {
   display: flex;
+  align-items: center;
 }
