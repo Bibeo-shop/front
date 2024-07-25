@@ -1,6 +1,12 @@
-const MinusIcon = () => {
+import React from 'react'
+
+interface MinusIconProps {
+  onClick?: () => void
+}
+
+const MinusIcon: React.FC<MinusIconProps> = ({ onClick }) => {
   return (
-    <div>
+    <div onClick={onClick}>
       <svg
         width="24"
         height="24"

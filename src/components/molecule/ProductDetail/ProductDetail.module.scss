@@ -48,21 +48,29 @@
   flex-direction: row;
   gap: pxToRem(20);
   width: 100%;
+  padding: 0 pxToRem(40);
 }
 
 .imageArea {
   position: relative;
   display: block;
   aspect-ratio: 1;
-  flex: 1.5;
+  flex: 1;
+  max-height: pxToRem(700);
 }
 
 .container {
-  flex: 1;
+  flex: 0.5;
 }
 
 .mobileOrderContainer {
   display: none;
+}
+
+.btnCart {
+  width: 100%;
+  max-width: pxToRem(62);
+  border-radius: pxToRem(10);
 }
 
 @include breakpoint('tablet') {
@@ -89,7 +97,7 @@
     width: 100%;
     padding: pxToRem(10);
     background-color: $white;
-    
+
     .btnWrap {
       display: flex;
       gap: pxToRem(16);

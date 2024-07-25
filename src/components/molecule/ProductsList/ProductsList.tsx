@@ -3,8 +3,21 @@
 import Typography from '@/components/atom/Typography/Typography'
 import ProductCard from '../ProductCard/ProductCard'
 import cn from './ProductsList.module.scss'
+import { useProductsList } from '@/hooks/useProductsList'
 
 const ProductsList = () => {
+  const { data, error, isLoading } = useProductsList()
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
+
+  const totalCount = data?.length
+
   return (
     <div className={cn.productsList}>
       <div className={cn.wrap}>
@@ -17,36 +30,17 @@ const ProductsList = () => {
         <div className={cn.totalWrap}>
           <Typography weight="600">TOTAL</Typography>
           <Typography color="primary" weight="600">
-            20
+            {totalCount}
           </Typography>
         </div>
       </div>
       <div className={cn.productArea}>
         <ul className={cn.container}>
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
+          {data?.map((product) => (
+            <li key={product.id}>
+              <ProductCard {...product} />
+            </li>
+          ))}
         </ul>
       </div>
     </div>

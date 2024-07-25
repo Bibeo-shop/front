@@ -1,4 +1,4 @@
-import axiosInstance from './axiosInstance'
+import { axiosInstance } from './axiosInstance'
 import { SignUpData } from '@/types'
 
 export const postSignUp = async (data: SignUpData) => {

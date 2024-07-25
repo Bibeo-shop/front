@@ -1,46 +1,100 @@
+'use client'
+import { useState } from 'react'
 import Typography from '@/components/atom/Typography/Typography'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-
 import { Separator } from '@/components/ui/separator'
 import { CartIcon, StarIcon, MinusIcon, PlusIcon } from '@/components/atom/svg'
-import cn from './ProductBuyInfo.module.scss'
 import SelectOption from '@/components/atom/SelectOption/SelectOption'
 import Link from 'next/link'
+import ProductBadge from '../ProductBadge/ProductBadge'
+import PriceText from '@/components/atom/PriceText/PriceText'
+import { useProductDetail } from '@/hooks/useProductDetail'
+import StarRating from '../StarRating/StarRating'
+import cn from './ProductBuyInfo.module.scss'
+
+interface SelectedOption {
+  option: string
+  quantity: number
+}
 
 const ProductBuyInfo = () => {
+  const { data } = useProductDetail()
+  const [selectedOptions, setSelectedOptions] = useState<SelectedOption[]>([])
+
+  if (!data) return null
+
+  const {
+    name,
+    rate,
+    review_count,
+    price,
+    retail_price,
+    points,
+    status,
+    shipping_fee,
+    shipping_details,
+    options,
+  } = data
+
+  const isSoldOut = options.every((option) => option.soldOut)
+
+  const discountAmount = retail_price - price
+  const discountRate = (discountAmount / retail_price) * 100
+  const discount = Math.round(discountRate)
+
+  const addOption = (option: string) => {
+    setSelectedOptions((prevOptions: SelectedOption[]) => {
+      const existingOption = prevOptions.find((opt) => opt.option === option)
+      if (existingOption) {
+        return prevOptions
+      }
+      return [...prevOptions, { option, quantity: 1 }]
+    })
+  }
+
+  const removeOption = (index: number) => {
+    const newOptions = selectedOptions.filter((_, i) => i !== index)
+    setSelectedOptions(newOptions)
+  }
+
+  const updateQuantity = (index: number, newQuantity: number) => {
+    const newOptions = [...selectedOptions]
+    newOptions[index].quantity = newQuantity
+    setSelectedOptions(newOptions)
+  }
+
+  const totalPrice =
+    selectedOptions && selectedOptions.length > 0
+      ? selectedOptions.reduce(
+          (total, item) => total + price * item.quantity,
+          0
+        )
+      : price
+
   return (
     <div className={cn.productBuyInfo}>
       <div className={cn.statusWrap}>
-        <Badge>NEW</Badge>
-        <Badge variant="outline">EVENT</Badge>
-        <Badge variant="secondary">품절</Badge>
-        <Badge variant="third">무료배송</Badge>
+        <ProductBadge status={status} />
       </div>
       <Typography type="h3" size="20" weight="800" className={cn.title}>
-        실버 925 블랙 오닉스 큐빅 귀걸이
+        {name}
       </Typography>
       <div className={cn.detailWrap}>
         <div className={cn.rateWrap}>
-          <StarIcon size="12" />
-          <StarIcon size="12" />
-          <StarIcon size="12" />
-          <StarIcon size="12" />
-          <StarIcon size="12" />
-          <Typography
+          <StarRating rating={rate} />
+          <PriceText
+            price={rate}
             size="12"
             color="gray-normal"
             weight="800"
             className={cn.rateAmount}
-          >
-            4.9
-          </Typography>
+          />
         </div>
 
         <Separator orientation="vertical" className="h-2" />
@@ -48,31 +102,39 @@ const ProductBuyInfo = () => {
           <Typography size="12" color="primary">
             리뷰
           </Typography>
-          <Typography size="12" color="primary">
-            5,231개
-          </Typography>
+          <PriceText
+            price={review_count}
+            size="12"
+            color="primary"
+            suffixes="건"
+          />
         </div>
       </div>
       <div className={cn.priceWrap}>
         <div>
-          <Typography color="primary" size="24" weight="800">
-            13,000원
-          </Typography>
-          <Typography color="gray-strong" className={cn.beforePrice}>
-            15,000원
-          </Typography>
+          <PriceText
+            price={price}
+            size="24"
+            color="primary"
+            weight="800"
+            suffixes="원"
+          />
+          <PriceText
+            price={retail_price}
+            color="gray-strong"
+            className={cn.beforePrice}
+            suffixes="원"
+          />
         </div>
         <Typography color="primary" size="20" weight="800">
-          10%
+          {discount}%
         </Typography>
       </div>
       <div className={cn.pointWrap}>
         <Typography size="14" weight="600">
           적립 포인트
         </Typography>
-        <Typography size="14" weight="600">
-          150원
-        </Typography>
+        <PriceText price={points} size="14" weight="600" suffixes="원" />
       </div>
       <div className={cn.wrap}>
         <Accordion type="multiple">
@@ -85,28 +147,30 @@ const ProductBuyInfo = () => {
             <AccordionContent>
               <div className={cn.infoWrap}>
                 <div className={cn.infoGroup}>
-                  <Typography size="12" weight="600" className={cn.label}>
+                  <Typography size="14" weight="600" className={cn.label}>
                     정가
                   </Typography>
-                  <Typography
-                    size="12"
+                  <PriceText
+                    price={retail_price}
                     color="gray-strong"
+                    size="14"
+                    weight="400"
                     className={cn.price}
-                  >
-                    15,000원
-                  </Typography>
+                    suffixes="원"
+                  />
                 </div>
                 <div className={cn.infoGroup}>
-                  <Typography size="12" weight="600" className={cn.label}>
+                  <Typography size="14" weight="600" className={cn.label}>
                     판매가
                   </Typography>
-                  <Typography
-                    size="12"
+                  <PriceText
+                    price={price}
                     color="gray-strong"
+                    size="14"
+                    weight="400"
                     className={cn.price}
-                  >
-                    13,500원
-                  </Typography>
+                    suffixes="원"
+                  />
                 </div>
               </div>
             </AccordionContent>
@@ -120,27 +184,28 @@ const ProductBuyInfo = () => {
             <AccordionContent>
               <div className={cn.infoWrap}>
                 <div className={cn.infoGroup}>
-                  <Typography size="12" weight="600" className={cn.label}>
+                  <Typography size="14" weight="600" className={cn.label}>
                     배송비
                   </Typography>
-                  <Typography
-                    size="12"
+                  <PriceText
+                    price={shipping_fee}
                     color="gray-strong"
+                    size="14"
+                    weight="400"
                     className={cn.price}
-                  >
-                    2,000원 (주문시 결제)
-                  </Typography>
+                    suffixes="원 (주문시 결제)"
+                  />
                 </div>
                 <div className={cn.infoGroup}>
-                  <Typography size="12" weight="600" className={cn.label}>
+                  <Typography size="14" weight="600" className={cn.label}>
                     출고 정보
                   </Typography>
                   <Typography
-                    size="12"
+                    size="14"
                     color="gray-strong"
                     className={cn.price}
                   >
-                    국내 배송 / 롯데택배
+                    {shipping_details}
                   </Typography>
                 </div>
               </div>
@@ -148,36 +213,69 @@ const ProductBuyInfo = () => {
           </AccordionItem>
         </Accordion>
         <div className={cn.selectWrap}>
-          <SelectOption />
+          <SelectOption options={options} onSelect={addOption} />
         </div>
-        <div className={cn.optionContainer}>
-          <Typography weight="600">실버925 블랙 오닉스 큐빅 귀걸이</Typography>
-          <div className={cn.optionGroup}>
-            <div className={cn.selectBtn}>
-              <MinusIcon />
-              <Typography weight="800">1</Typography>
-              <PlusIcon />
+        {selectedOptions.map((item, index) => (
+          <div key={index} className={cn.optionContainer}>
+            <Button
+              variant="ghost"
+              className={cn.closeBtn}
+              onClick={() => removeOption(index)}
+            >
+              &#215;
+            </Button>
+
+            <Typography weight="600">{item.option}</Typography>
+            <div className={cn.optionGroup}>
+              <div className={cn.selectBtn}>
+                <MinusIcon
+                  onClick={() =>
+                    updateQuantity(index, Math.max(1, item.quantity - 1))
+                  }
+                />
+                <Typography weight="800">{item.quantity}</Typography>
+                <PlusIcon
+                  onClick={() => updateQuantity(index, item.quantity + 1)}
+                />
+              </div>
+              <PriceText
+                price={price * item.quantity}
+                weight="800"
+                suffixes="원"
+              />
             </div>
-            <Typography weight="800">13,500원</Typography>
           </div>
-        </div>
+        ))}
       </div>
 
       <div className={cn.optionGroup}>
         <Typography weight="800">총 상품금액</Typography>
-        <Typography weight="800" size="24" color="primary">
-          13,500원
-        </Typography>
+        <PriceText
+          price={totalPrice}
+          weight="800"
+          size="24"
+          color="primary"
+          suffixes="원"
+        />
       </div>
 
-      <div className={cn.btnWrap}>
-        <Button size="full" variant="outline">
-          <CartIcon />
-        </Button>
-        <Button size="full" asChild>
-          <Link href="/order/order">구매하기</Link>
-        </Button>
-      </div>
+      {isSoldOut ? (
+        <div className={cn.btnWrap}>
+          <Button size="full" disabled>
+            SOLD OUT
+          </Button>
+        </div>
+      ) : (
+        <div className={cn.btnWrap}>
+          <Button size="full" variant="outline" className={cn.btnCart}>
+            <CartIcon />
+          </Button>
+
+          <Button size="full" asChild>
+            <Link href="/order/order">구매하기</Link>
+          </Button>
+        </div>
+      )}
     </div>
   )
 }

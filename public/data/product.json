@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "name": "실버 925 블랙 오닉스 큐빅 귀걸이",
+  "product_image_url": "/images/product_image3.png",
+  "rate": 2.7,
+  "review_count": 5231,
+  "price": 13000,
+  "retail_price": 15000,
+  "points": 150,
+  "status": ["NEW", "EVENT"],
+  "description": "제품설명",
+  "shipping_fee": 2000,
+  "shipping_details": "국내 배송 / 롯데택배",
+  "options": [
+    { "name": "옵션 1 - 실버 925 레드 오닉스 큐빅 귀걸이", "soldOut": false },
+    { "name": "옵션 2 - 실버 925 핑크 오닉스 큐빅 귀걸이", "soldOut": true }
+  ]
+}
